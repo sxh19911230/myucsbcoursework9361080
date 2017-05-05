@@ -1,0 +1,232 @@
++-=-=-=-=-=-=-+
+| Viper  v1.4 |
++-=-=-=-=-=-=-+
+
+Authors:
+Pavel Aubuchon-Mendoza
+Wiltered Fire
+
+TheCerial www.zoozle.net
+
+---
+Introduction
+---
+Another couple months, another version... :) There are no really
+functional changes in this version, but there are some cool additions
+that I think will be useful. A bug was fixed involving having colons
+in the charset, but that has been taken care of. There are also now
+a percent counter and a Time Remaining function. These should at least
+allow you to see the mess you've gotten yourself into. I also re-wrote
+the time functions to understand days and years.
+
+There is now also written a C version of Viper. Written by Frank4DD, this
+version offers improved speed over my perl version. This is third party 
+stuff, so don't e-mail me for support. Download the C version at: 
+          http://www.deviance.org/pub/vip14-C.zip
+
+There are several things I would like to add. There have been a few
+requests for a 'dictionary creation' mode, which would not do any
+cracking but would only output the possibilities of the passwords. This
+will probably be in the next version. Another cool idea, suggested by
+Frank4DD, is to have the ability to supply known letters. Say you know the
+first and third letters of a password - you would be able to enter those
+and greatly reduce the number of possible cracks. I have no idea of how
+to implement this with my current code, but it would be cool. Maybe
+a distributed version in the future?
+
+---
+Summary:
+---
+Viper is for when your standard password cracker using the dictionary
+attack method just isn't doing the job. It will literally go through
+every combination of characters you define looking for a match. This
+virtually guarantees that you will find the password. The only drawback to
+this method is the time required to use it. For each additional letter
+in your character set the number of possible password increases
+exponentially. You have to be wise in your choices, or you will screw
+yourself with the required processing time.
+
+As machines are faster and faster (we already have 1 Ghz processors) this
+method will become more and more viable. At this point, you have to have
+a lot of patience to use this program effectively. If you don't believe me,
+start viper at a password length of 8 with the -v switch. Wait for an update,
+and see how many hundreds of years it would take you to check the entire password
+space. I would really only reccomend letting viper run up through 6 characters - 
+after that the time required is too much of a factor.
+
+---
+Usage:
+---
+Before any of this happens, you've got to have a shadowed password file. If
+you don't know what that is, then check the tips section for a clue. Here is a
+run down of the command line options:
+   
+   -f <file>    File to load password from (required unless using lsf)
+   -u <user>    Username to load from file (required unless using lsf)
+
+   -lsf <file>  Load saved file from previous session
+   -pf <file>   Save progress to file at update interval
+   -rf #        Amount of time in minutes to run for (default infinity)
+
+   -c #         Character set from charset.ini to use (default 1)
+   -pws #       Minimum password length (starting value - default 1)
+   -pwl #       Maximum password length (default 12)
+   -ui #        Console update interval (default 250000)
+   -v           Verbose output
+ 
+: -f <file> 
+This is simply the file that the account you want to crack is located it.
+ 
+: -u <user> 
+The username found in the above specified file you want to use.
+
+: -lsf <file>
+This will load a progress file from a previous run, as created with the
+-pf argument. This is good if you want to switch to a faster machine, or
+have to reboot your machine for some reason.
+
+: -pf <file>
+This will keep a disk copy of your cracking progress. I would reccomend
+using this at all times. If you need to stop Viper, you can start again
+where you left off by loading the file specified here with the -lsf
+argument. This file will be updated whenever the console is updated, as
+defined in the -ui argument. At the end of a run, the results will also
+be written to this same file.
+
+: -rf #
+The amount of time in minutes that Viper will run for before quitting.
+Use this if you want to set up an automated nightly run.
+
+: -c #
+In the charset.ini file there are character set definitions. The format is
+very simple. It is an index number followed by a space and the characters
+in the set. You can define as many as you want in this file, and supply the
+index number with this argument. Some sample sets are included.
+ 
+: -pws #
+Define the minimum password length. This comes in very handy if you know 
+that the target system has a minimum password length defined. Say if on 
+the system you have to have a password of at least 6 characters, then you 
+don't have to wait for viper to work it's way through 1-5.
+
+: -pwl # 
+Viper will start at a character length of 1 (be default), try all the 
+combinations  and then move on to a character length of two, where it 
+will try all combinations and move on. It will continue to do this until 
+it reaches a character length defined with this argument. There may be 
+some cases where the encrypted  password only contains the first eight 
+letters of the password, but these must be considered on a case 
+by case basis.
+
+: -ui <# minutes>
+This is a relatively important argument. The console will be updated and
+the progress file written to after this many minutes have elapsed. To avoid
+the time being constantly checked, it is only checked after 500,000 cracks
+have gone by, so it will not update _exactly_ at the interval specified, but
+pretty close to it. Due to this large interval, it will not be very precise
+at small time intervals ( < 1 minute). This number is easily tweakable if
+you are using the unix version and understand a little perl. Increasing this
+number will decrease the time checks, and thus somewhat improve performance.
+
+: -v
+Adds a second line to the status output. See below for details.
+
+-- The status update --
+
+Here is what the status update looks like :
+
+Standard ==> [ Length: 4 | Percent: 0.67% | CPS: 13157 | Time : 00:01:16 ]
+Verbose  ==> [ Estimated Time Remaining : 03:22:07 | Last: av5@]
+
+This updates incoperates several new features on this display. The standard
+output shows the current password length being worked on, the percentage
+completed of the current length, the Cracks Per Second, and the elapsed time.
+Keep in mind that the percent only relfects the current password length, and
+that the CPS is only calculated from the last update - so it will change.
+
+The verbose switch turns on the second line of output. This gives you the
+estimated time remaining for the current length, and the last password
+attempted. The time remaining is calculated by considering how many remaining
+possible password exist, and then dividing that by the current CPS. This
+will also change depending on what you are doing. It will remain fairly
+accurate however.
+
+-- an example crack --
+There is a file included called test.txt, with one user. You can feed this
+into viper to see how it responds. You can do it with this command line:
+
+viper -f test.txt -u test -pf test.pro -ui 0.5
+
+Let it run for until it updates the console, then hit ^C to stop
+Viper. You can continue this crack from the last update interval like this:
+
+viper -lsf test.pro
+
+It should then continue cracking from where you left off. In reality you
+would not use a UI that low, but I wanted this example to show at least
+one update. Running straight through this takes my machine 55 seconds. 
+When it finshes check the test.pro file, and you will see that it has 
+exactly what was displayed on the console.
+
+---
+Tips
+---
+
+-> I will not help you <-
+I will not crack your boyfriends hotmail password. You cannot just enter
+an e-mail address and get the password. I hate to include this, but you
+wouldn't believe the messages I get.
+
+-> Automatic notification <-
+There is nothing currently built in to Viper to notify you when completed. 
+This could however be easily accomplished by putting the call to Viper in 
+a script, with a command directly after it to e-mail you the progress file. 
+This would be much preferable than just checking on the console display...
+If you are running Viper as a nightly job, you will just end up getting
+the 'in-progress' progress files, which will not be very helpful. Viper will
+indicate on the first line of the progress file wether or not it has found
+the password yet. Just look at an in-progress file and a finished progress
+file to see the difference.
+
+-> What is the shadowed password file? <-
+The shadowed password file is a file on a unix host that has the encrypted 
+passwords of all the users contained in it. The trick to this method of 
+password discovery is getting ahold of it in the first place. 
+
+-> Processor Usage <-
+Viper is a hog for processor time, so you very well may experience some
+system degredation. You can define thread priority in the majority of
+operating systems (see the 'start' command under win32 or 'nice' for *nix), 
+which is what you will have to do.
+
+--- 
+Revision History
+---
+
+v1.4.1:	Fixed a small bug 
+
+v1.4 :	charset.ini now space deliminated
+	Estimated Time Remaining function added
+	Time functions understand days and years
+	Percent calculation added
+	C version also available (see the top of this document)
+	Some documentation updates
+
+v1.3 :	Define minimum password length
+	Load/Save jobs with progress file
+	UI calculated in minutes
+	Runfor function added
+
+v1.2 :	Dumped the GUI and added many options,
+	making it much more functional. The most
+	important improvement is the ability to
+	define your own character sets. 
+
+v1.1 :	Ported to windows GUI, made into
+	a single account brute force app.
+
+v1.0 :	Original command line release,
+	standard cracker.
+
+-Hale / admin@deviance.org 5-29-2000
+-TheCerial / thecerial@gmail.com

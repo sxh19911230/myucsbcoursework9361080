@@ -1,0 +1,40 @@
+<DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+  <script src='validate-todo.js'></script>
+  <link rel="stylesheet" href="style-todo.css">
+</head>
+
+<body>
+  <!-- STEP 2 TODO: Give your webpage a name and put it in your h1 tag -->
+  <h1></h1>
+  <!-- STEP 2 TODO: Create a <h2> tag and put your company tag line in it -->
+  <p class="top_text">Sign in</p>
+  <div id ='sign_in_box'> 
+    <div class = "img">
+      <img src = "avatar_2x.png"> 
+    </div>
+    <form>
+      <input id="email" name="Email" type ="email" placeholder="Email">
+      <!-- STEP 2 TODO: Create an input field for password and an appropriate placeholder (hint: look at email input field)-->
+      <input id="signIn" name="signIn" type ="submit" onclick="validate()" value = "Sign In">
+      <div id = "blank_sign_in"> </div>
+      <table>
+        <tr>
+          <td>
+          <input type = "checkbox"  checked = "true"> Stay signed in 
+          </td>
+          <td id="blank_data"></td>
+          <td>
+            <!-- STEP 2 TODO: add target="_blank" -->
+            <a id="help-info"  href="https://www.google.com/?gws_rd=ssl"> Help </a>
+          </td>
+        </tr>
+      </table>
+      
+    </form>
+  </div>
+</body>
+
+</html>

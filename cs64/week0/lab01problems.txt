@@ -1,0 +1,81 @@
+b 0 problems: Data representation and bitwise operations
+
+Remember to solve these individually, working with your partner only when
+you get stuck, and seeking help from the TA only when you are both stuck.
+You may NOT use any calculators.  Make sure you are on your own computer,
+editing your own file.
+
+This is your assignment for the week, not just for the day, so it is 
+expected that you will not finish during this lab time.  
+
+For each problem, make sure you write your answer exactly on the line with 
+the problem number (i.e. 1a) that follows the question.
+
+Binary representation:
+
+0.  Count how many instances there are of the word "hello" in this file.
+You can use the vi command for searching for a word.  Then, after you count
+them, you might want to remove them so that it is easier to read the problems.
+0a) Including the "hello" in this question, there are 8 of them. 
+
+1. In a decimal number, a 1 in position 3 is worth 10^3.  Write your
+answer is exponent form just as I did in the decimal example.
+In binary, how much is a 1 in position 3 worth?
+1a) 2^3. 
+In octal, how much is it worth?
+1b) 8^3.
+In hexadecimal, how much is it worth?
+1c) 16^3.
+
+
+2. Convert the following decimal numbers into 8-bit binary with the 
+format 0b01001111:
+2a) 13 = 0b00001101
+2b) 9 = 0b00000101
+2c) 19 = 0b00010011
+
+3. Convert the following unsigned binary numbers into decimal:
+3a) 0101 = 5
+3b) 1101 = 13
+3c) 1011 = 11
+
+4.  Convert the following decimal numbers into 2-digit hexadecimal numbers.
+Report the answers in the format 0xff.
+4a) 73 = 0x49
+4b) 23 = 0x17
+4c) 151 = 0x97
+
+5.  Tell the number of bits for each term.
+5a) byte =   8 bits
+5b) nibble =  4 bits
+
+6.  Bit positions:
+Remember that we number bit positions from right to left, starting with 0.
+The rightmost bit of a 16-bit number is what position (express as a decimal)?
+6a) 0
+The leftmost bit of a 16-bit number is what position (express as a decimal)?
+6b) 15
+
+7.  Fill in the following properties of binary numbers.  
+Remember to place the answer on the line with the problem number.  
+Do not capitalize your words.  If you want to express
+an exponent, use the '^'.  For example, the value 8 is 2 to the 3rd power.  
+Express this as 2^3.
+
+Shifting the digits one to the left is the same as performing a 
+multiplication by
+7a) 2
+If the bit in bit position 0 is a 1 (for an integer), the number is
+7b) odd
+If a number contains all 0's except a 1 in position n, the value is
+7c) 2^n
+Shifting the digits two to the right is the same as performing a division by
+7d) 4
+
+8. Convert the following decimal numbers into 8-bit binary with the
+format 0b01001111:
+8a) -15 = 0b11110001
+8b) -6 = 0b11111010
+8c) -10 = 0b11110110
+
+

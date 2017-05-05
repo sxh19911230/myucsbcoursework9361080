@@ -1,0 +1,4 @@
+for version 1.5:
+- implement word mutator
+- implement wordlist cracking method
+- complete code rewrite

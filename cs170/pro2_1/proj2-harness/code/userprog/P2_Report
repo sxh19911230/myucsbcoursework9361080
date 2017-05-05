@@ -1,0 +1,10 @@
+Report for Project 2
+
+Group member: Xianghong Sun
+
+I soloed this program. However there are some bugs caused me headache and I almost gave it up.
+There are still bugs (for example, the kernelBuf stuff). So I just commented the delete [] kernelBuf and used printf instread of putchar.
+
+The stdin is not implemented.
+
+Not sure what else to say.

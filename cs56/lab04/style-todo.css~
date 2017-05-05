@@ -1,0 +1,68 @@
+body {
+font-family: 'Open Sans', arial;
+}
+
+h1 {
+color: orange;
+font-weight: 400;
+text-align: center;
+}
+
+h2 {
+/* STEP 3 TODO: Add color, font-weight, font-size, text-align, */
+}
+
+p.top_text {
+  text-align: center;
+}
+
+
+div#sign_in_box {
+  height: 350px;
+  width:  400px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f7f7f7;
+  padding: 50px 5px;
+}
+
+#blank_sign_in {
+  height: 10px;
+}
+
+#blank_help{
+  float: right;
+}
+
+/*STEP 3 TODO: Add Appropriate Margin in px */
+.img {
+  margin: ;
+}
+
+#help{
+  width: 10px;
+}
+
+input#email {
+  height: 45px;
+  width: 275px;
+  margin: 0px 60px;
+}
+
+/* STEP 3 TODO: Add a Password style you 
+will need to use the ID you made in step2
+It needs to match the mockup exactly */
+
+/*STEP 3 TODO: Add appropriate width to sign in button*/
+#signIn {
+  height: 45px;
+  width: ;
+  color: white;
+  background-color: #4d90fe;
+  margin: 5px 60px;
+}
+
+td#blank_data {
+  width: 170px;
+}
+

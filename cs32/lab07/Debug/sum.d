@@ -1,0 +1,1 @@
+sum.d: ../sum.cpp

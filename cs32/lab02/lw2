@@ -1,0 +1,39 @@
+#!/bin/sh
+# List writable files
+# Xianghong Sun, 10/13/2014
+
+if [ "$#" -eq "0" ]; then
+	echo "usage: ./lw DirectoryName"
+	exit 1
+fi
+
+if [ -f $1 ];then
+
+	echo "$1 is not a directory"
+	exit 4
+fi
+
+if ! [ -d $1 ]; then
+
+	echo "there is no directory named $1"
+	exit 2
+fi
+if ! [ -r $1 ]; then
+		
+	echo "you do not have permission to read $1"
+	exit 3
+fi
+
+
+cd $1
+
+echo "items in $(pwd) that are writeable by $USER:"
+
+for i in *
+do 
+	if [ -w $i ];then 
+		echo "   `file $i`";
+	fi
+done
+
+exit 0	

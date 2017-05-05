@@ -1,0 +1,101 @@
+Xianghong Sun
+9361080
+xianghong@umail
+sxh19911230@engineering
+
+
+QUICK RUN:
+make doDic
+make doBru
+make doSub
+
+
+Report:
+
+1:
+Dictionary attack
+acc: targaryend
+./dic wordsEn.txt "\$5\$aBD123cdE\$ADH/D30llsWnrTJTKJBxvaztshXoNbX4J.hakVNp1p0"
+Password Found:
+pricelessness
+
+time:
+real    3m27.499s
+user    3m26.910s
+sys     0m0.552s
+
+2:
+Brute Attack
+acc: tyrion_lannister
+
+It just happend the password start with 'a'
+It takes me a long time to try all 5-digit password.
+I mean this password is just designed to start with 'a' or I cannot really break it in sevel days.
+
+./bru 2 STlLGmwDFuINg
+Password Found:
+asjv7s
+
+time:
+real    1m11.993s
+user    1m11.942s
+sys     0m0.021s
+
+
+
+3:
+Subsitution
+acc: j_snow
+
+I did two version on subsitution.
+
+subsitution.c:
+The first one is too complex. It tries every possible subsitutions.
+For example: password
+p can be in lower case or upper case, which has 2 options.
+a can be in lower case, upper case, or @, which has 3 options.
+s can be in lower case, upper case, $, or 5, which has 4 options.
+w can be in lower case, upper case, or uu, which has 3 options.
+...
+
+One word can be subsitute into 2 * 3 * 4 * 4 * 3 * 3 * 2 * 2 = 3456 forms.
+Forms for longer word can be doubled or more.
+Search through the original dictionary takes 5 min. And this subsitution might take two weeks.
+So, I think professor might ease the cracking to be subsituting all same letter once.
+
+subsitution2.c:
+So, this is the second version. It subsitute same letter once to make it less complex.
+
+./sub2 wordsEn.txt "\$1\$aEcddE12\$9NCUhiNOvSP5QOdiRDf1Z."
+Password Found:
+73rr0r
+
+time:
+real    31m11.934s
+user    30m7.251s
+sys     1m3.924s
+
+
+4:
+Failed
+acc: arystark
+
+No idea how to crak
+
+
+
+Other attempts (all failed):
+
+Combination:
+Attempt 1: Combine every two words in the dictionary: this took too much time so I gave up.
+Attempt 2: Try the common words (Example: "the") + every words in the dictionary
+Attempt 3: Add numbers after every words. Example: password1
+
+Common password attack:
+Attempt 1: Find a common password dictionary and name dictionary online, do the dictionary attack
+Attempt 2: Subsitute the letters in the dictionaries above
+
+Totation:
+Attempt: Rotate letter by 1-26 places and try.
+
+Some other stupid attempts that I do not remember.

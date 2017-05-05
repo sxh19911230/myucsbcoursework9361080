@@ -1,0 +1,58 @@
+// bigsort.cpp
+// YOUR NAME(S) AND DATE
+
+#include <iostream>
+#include <string>
+#include <chrono>
+#include "bigint.h"
+using namespace std;
+
+void sort(BigInt *aptrs[], int n) {
+    // IMPLEMENT - okay to add helper functions
+}
+
+#define MAX 20000
+int main(int argc, char *argv[]) {
+    
+    bool justtimer = false;
+    chrono::steady_clock::time_point start, end;
+    if (argc > 1) {
+        if (argv[1][0] == '-' && argv[1][1] == 't')
+            justtimer = true;
+        else {
+            cerr << "bad option: " << argv[1] << endl;
+            return 1;
+        }
+    }
+    
+    BigInt *p[MAX];
+    string s;
+    int n = 0;
+    while (getline(cin, s)) {
+        try {
+            p[n] = new BigInt(s);
+        }
+        catch(BigException e) {
+            cerr << "bad data: " << s << " at line " << n << endl;
+            return 1;
+        }
+        ++n;
+    }
+
+    if (justtimer)
+        start = chrono::steady_clock::now();
+    
+    sort(p, n);
+    
+    if (justtimer) {
+        end = chrono::steady_clock::now();
+        cout << "sort time for " << n << " BigInts: "
+             << chrono::duration_cast<chrono::milliseconds>(end - start).count()
+             << " milliseconds" << endl;
+    }
+    else
+        for (int i=0; i<n; i++)
+            cout << *p[i] << endl;
+    
+    return 0;
+}

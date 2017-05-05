@@ -1,0 +1,23 @@
+﻿a. What is the name of the section with the program's instructions?
+
+.text
+
+b. In what section is the array named a stored?
+
+.data
+
+In what section is the constant M stored?
+
+.rodata
+
+In what section is the static variable k stored?
+
+.data
+
+How is the array b handled differently than other variables?
+
+Array b is stored in ,dynamic section
+
+The variable i is handled differently too. How? 
+
+Ariable i is stored in stack section

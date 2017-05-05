@@ -1,0 +1,194 @@
+
+Week 1 problems: Chapter 3 in Write Great Code by Randall Hyde
+
+Remember to solve these individually, working with your "buddy" only when
+you get stuck, and seeking help from the TA only when you are both stuck.
+You may NOT use any calculators.  Make sure you are on your own computer,
+editing your own file.  Everyone will turn in their own copy of this 
+problem file.
+
+This is part of your assignment for the week, not just for the day, so it is 
+expected that you may not finish during this lab time.  
+
+For each problem, make sure you write your answer exactly on the line with 
+the problem number (i.e. 1a) that follows the question.
+
+1.  Tell the results of the following additions of a single digit of a larger binary addition
+Remember to put your answer below.  Report any carry after the digit.  For example,
+the answer might be 
+0
+or
+0 with carry
+
+For example:
+example1) 1 + 1 = 0 with carry
+example2) 0 + 0 = 0
+
+Now fill in the others:
+
+1a) 0 + 1 = 1
+
+1b) carry + 1 + 1 = 1 with carry
+
+1c) carry + 0 + 1 = 0 with carry
+
+2.  Tell the results of the following binary addition operations. Truncate the answer to 8 bits.
+For each one, make sure you identify whether they created an overflow or a carry or both.
+For an overflow, put a capital V.  For a carry, put a capital C.  If both, put VC.  Place this
+information after the 8-bit answer.
+
+Here is an example of how I want the answer:
+
+  0b00101001
++ 0b11101001
+2ex) 0b00010010 C
+
+  0b00110011 
++ 0b01000100
+2a) 0b01110111
+
+  0b00110011 
++ 0b11110011
+2b) 0b00100110 C
+
+  0b01110011 
++ 0b01110001
+2c) 0b11100100 V
+
+  0b10111111 
++ 0b10000001
+2d) 0b01000000 VC
+
+3.  Subtraction is actually much easier if you negate the second number and then add them
+together rather than performing a high number of borrows.
+
+For each of the following binary numbers, specify the negated value in binary.  For this
+to work out, we need to negate using 2's complement - flip all the bits and add 1.
+For example, 
+0b00110011 original
+0b11001100 all bits flipped
+0b11001101 add 1
+
+For these problems, just report the negated value, not the intermediate step.
+
+0b10110011
+3a)0b01001101
+
+0b00101101
+3b)0b11010011
+
+0b10010111
+3c)0b01101001
+
+4.  Tell the answer to the following subtraction operations.  
+Truncate the answer to 8 bits.
+Remember that subtraction is performed by adding the negation of the
+second number.
+There will be several steps - just show the answer. 
+Do not report whether it generated a carry or overflow
+Report the answer in the same way as in the addition problems.
+
+  0b00110011 
+- 0b01000100
+4a) 0b11101111
+
+  0b10010011 
+- 0b11110011
+4b) 0b10100000
+
+  0b00110111 
+- 0b01110010
+4c) 0b11000101
+
+  0b11110110 
+- 0b00000001
+4d) 0b11110101
+
+5. Perform a bitwise AND on the following two binary numbers
+
+    0b00110111 
+&   0b11100100
+5a) 0b00100100
+
+    0b00010011 
+&   0b00110011
+5b) 0b00010011
+
+    0b00110011 
+&   0b00110011
+5c) 0b00110011
+
+    0b11101101 
+&   0b00010010
+5d) 0b00000000
+
+6. Perform a bitwise OR on the following two binary numbers
+
+    0b00110011 
+|   0b11000110
+6a) 0b11110111
+
+    0b01110011 
+|   0b01110011
+6b) 0b01110011
+
+    0b00110011 
+|   0b00110101
+6c) 0b00110111
+
+    0b11101111 
+|   0b00000001
+6d) 0b11101111
+
+7.  Perform a bitwise XOR on the following two binary numbers
+
+    0b00111011 
+^   0b11000100
+7a) 0b11111111
+
+    0b10110011 
+^   0b00010011
+7b) 0b10100000
+
+    0b00111011 
+^   0b00010001
+7c) 0b00101010
+
+    0b11110111 
+^   0b00001001
+7d) 0b11111110
+
+8.  Look at http://www.cprogramming.com/tutorial/bitwise_operators.html 
+and read how bitwise operations are useful.  You are not going to and
+two numbers together that you do or don't know the values of.  Instead, 
+you will probably take a number you DO NOT know and perform a bitwise 
+operation on it with a number that you DO know.  The known number above is 
+called a mask.  You may do this to inspect, set, flip specific bits in the 
+unknown number.  In the following problems, the unknown 
+number has all X's, and the known number has all 1's and 0's.  Write the 
+answer.  Each bit of the answer is either 1, 0, or X, where X
+is the same bit value as the corresponding bit in the unknown number.
+
+    0bXXXXXXXX
+|   0b10001101
+8a) 0b1XXX11X1
+
+    0bXXXXXXXX
+&   0b10111100
+8b) 0bX0XXXX00
+
+Remember that bit numbers start numbering from 0.
+
+Specify the mask you would need to inspect bit 7 of the unknown number.
+Express it as a 4-digit hexadecimal number.  Hexadecimal numbers are always unsigned.
+8c) 0x0080
+
+Specify the mask you would need to set bit 7 of the unknown number to zero.
+Express it as a 4-digit hexadecimal number.  Hexadecimal numbers are always unsigned.
+8d) 0xFF7F
+
+Specify the mask you would need to set bit 7 of the unknown number to one.
+Express it as a 4-digit hexadecimal number.  Hexadecimal numbers are always unsigned.
+8e) 0x0080
+
+

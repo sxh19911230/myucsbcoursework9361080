@@ -1,0 +1,77 @@
+
+Week 2 problems: 
+MIPS programming (arithmetic and control)
+
+Remember to solve these individually, working with your "buddy" only when
+you get stuck, and seeking help from the TA only when you are both stuck.
+You may NOT use any calculators.  Make sure you are on your own computer,
+editing your own file.
+
+This is part of your assignment for the week, not just for the day, so it is 
+expected that you may not finish during this lab time.  
+
+For each problem, make sure you write your answer exactly on the line with 
+the problem number (i.e. 1a) that follows the question.
+
+This first part is the MIPS tutorial.
+
+1.  To display an integer to the screen, what value do you place into $v0?
+Express the answer as in base 10.
+1) 1
+
+2.  What is the value in $a0 when syscall is called the sixth time within main?
+Express the answer as a hex number with 8 digits.
+2) 0x10010036
+
+3.  To display a string to the screen, what value do you place into $v0?
+Express the answer as in base 10.
+3) 4
+
+4.  To read an integer from the user, what value do you place into $v0?
+Express the answer as in base 10.
+4) 5
+
+5.  In what register does the simulator's system call place the 
+	integer that the user entered?  Give the register name (i.e. $s0).
+5) $v0
+
+6.  What variable is located at memory location 0x10010022? 
+(The answer is either welcome, prompt, sumText, or MyArray)
+6) prompt
+
+7.  There are times (i.e. the la pseudoinstruction) when it is 
+necessary to place a 32-bit constant into a register.  Unfortunately,
+addi only allows a 16-bit constant.  Therefore, this action requires
+two instructions. 
+Let's imagine I want to place the number 0x2b7a9454 into register $t0.
+You may only use $t0.
+Write the two instructions necessary to do so, choosing the same operations
+as used by mipsdemo.asm.  You may not use any pseudoinstructions.  
+
+Place the instructions next to each other on
+the same line, not on different lines.
+Example: add $s0, $s1, $s2  sub $s5, $s6, $s7
+7) lui $t0, 0x2b7a  ori $t0, $t0, 0x9454
+
+
+8. Let's assume we are on a 32-bit computer (that means ints are 32 bits).
+This code has a bug in it, which will lead to output that is probably
+not what the person intended.  This question is not about what the code
+should be, it is about how it will act now that it is wrong.
+If this function is called countdown(5), 
+what value will i have when the for loop below exits?
+Note that I'm not asking for the value that is last printed out - I am 
+asking what i will be when the loop exits.
+
+void countdown(int x)
+{
+        printf("Countdown: ");
+        for(int i=x;i>=0;i++)
+                printf("%d, ",i);
+        printf(".... Blastoff!");
+}
+Write your answer in hex.  Write all digits required to specify a 32-bit
+number.
+8) 0x80000000 
+
+
